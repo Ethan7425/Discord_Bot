@@ -23,7 +23,10 @@ client.on('messageCreate', (message: Message) => {
       'https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif',
     ];
     const gif = gifs[Math.floor(Math.random() * gifs.length)];
-    message.channel.send(`🌙 Goodnight, sweet dreams! 🐾💤\n${gif}`);
+
+    if (message.channel && 'send' in message.channel) {
+      message.channel.send(`🌙 Goodnight, sweet dreams! 🐾💤\n${gif}`);
+    }
   }
 });
 
