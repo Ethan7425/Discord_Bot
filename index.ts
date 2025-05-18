@@ -1,5 +1,5 @@
-const { Client, GatewayIntentBits } = require('discord.js');
-require('dotenv').config();
+import { Client, GatewayIntentBits, Message } from 'discord.js';
+import 'dotenv/config';
 
 const client = new Client({
   intents: [
@@ -10,14 +10,14 @@ const client = new Client({
 });
 
 client.once('ready', () => {
-  console.log(`✅ Logged in as ${client.user.tag}`);
+  console.log(`✅ Logged in as ${client.user?.tag}`);
 });
 
-client.on('messageCreate', message => {
+client.on('messageCreate', (message: Message) => {
   if (message.author.bot) return;
 
   if (message.content === '!goodnight') {
-    const gifs = [
+    const gifs: string[] = [
       'https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif',
       'https://media.giphy.com/media/xT0GqeSlGSRQut4RuY/giphy.gif',
       'https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif',
